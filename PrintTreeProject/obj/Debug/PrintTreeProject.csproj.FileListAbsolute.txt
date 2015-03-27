@@ -1,0 +1,9 @@
+c:\users\roman\documents\visual studio 2012\Projects\PrintTreeProject\PrintTreeProject\bin\Debug\PrintTreeProject.exe.config
+c:\users\roman\documents\visual studio 2012\Projects\PrintTreeProject\PrintTreeProject\bin\Debug\PrintTreeProject.exe
+c:\users\roman\documents\visual studio 2012\Projects\PrintTreeProject\PrintTreeProject\bin\Debug\PrintTreeProject.pdb
+c:\users\roman\documents\visual studio 2012\Projects\PrintTreeProject\PrintTreeProject\obj\Debug\PrintTreeProject.csprojResolveAssemblyReference.cache
+c:\users\roman\documents\visual studio 2012\Projects\PrintTreeProject\PrintTreeProject\obj\Debug\PrintTreeProject.exe
+c:\users\roman\documents\visual studio 2012\Projects\PrintTreeProject\PrintTreeProject\obj\Debug\PrintTreeProject.pdb
+C:\Users\Roman\Documents\Visual Studio 2012\Projects\PrintTreeProject\Tree\PrintTreeProject\bin\Debug\PrintTreeProject.exe.config
+C:\Users\Roman\Documents\Visual Studio 2012\Projects\PrintTreeProject\Tree\PrintTreeProject\obj\Debug\PrintTreeProject.exe
+C:\Users\Roman\Documents\Visual Studio 2012\Projects\PrintTreeProject\Tree\PrintTreeProject\obj\Debug\PrintTreeProject.pdb
