@@ -1,0 +1,5 @@
+10
+6
+C:\Users\Roman\Documents\Visual Studio 2012\Projects\PrintTreeProject\Tree\tree.txt
+3
+2

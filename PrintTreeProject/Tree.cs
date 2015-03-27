@@ -16,7 +16,7 @@ namespace PrintTreeProject
         }
 
         //recursive Add
-        private void _addRec(ref Node myNode, int val, int level)
+        private void _addRec(ref Node myNode, int val, int level, int leftInc, int rightInc)
         {
             
             if (level > 0)//check end of tree
@@ -24,18 +24,18 @@ namespace PrintTreeProject
                 Node newNode = new Node(val, level);
 
                 myNode = newNode;//attaching new node
-                
-                _addRec(ref myNode.left, val + 1, level - 1);//add left node
-                _addRec(ref myNode.right, val + 2, level - 1);//add right node
+
+                _addRec(ref myNode.left, val + leftInc, level - 1,leftInc ,rightInc);//add left node
+                _addRec(ref myNode.right, val + rightInc, level - 1, leftInc, rightInc);//add right node
                 return;
 
             }
         }
         
         //adding the TOP of the tree
-        public void Add(int myValue, int treeSize)
+        public void Add(int myValue, int treeSize, int leftInc, int rightInc)
         {
-            _addRec(ref top, myValue, treeSize);
+            _addRec(ref top, myValue, treeSize, leftInc, rightInc);
 
         }
 
