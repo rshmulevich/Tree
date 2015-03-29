@@ -27,3 +27,11 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+PrintTreeProject/bin/Debug/PrintTreeProject.exe
+PrintTreeProject/bin/Debug/PrintTreeProject.pdb
+PrintTreeProject/bin/Debug/PrintTreeProject.vshost.exe
+PrintTreeProject/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+PrintTreeProject/obj/Debug/PrintTreeProject.csproj.FileListAbsolute.txt
+PrintTreeProject/obj/Debug/PrintTreeProject.csprojResolveAssemblyReference.cache
+PrintTreeProject/obj/Debug/PrintTreeProject.exe
+PrintTreeProject/obj/Debug/PrintTreeProject.pdb
