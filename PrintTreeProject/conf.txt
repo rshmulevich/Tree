@@ -1,12 +1,6 @@
-10
-6
-C:\Users\Roman\Documents\Visual Studio 2012\Projects\PrintTreeProject\Tree\tree.txt
-3
-2
-
-Root
-TreeSize
-Path
-Left Increment
-Right Increment
+Root = 4
+TreeSize =6
+Path =C:/Users/Roman/Documents/Visual Studio 2012/Projects/PrintTreeProject/Tree/tree.txt
+Left_Increment = 3
+Right_Increment = 2
 

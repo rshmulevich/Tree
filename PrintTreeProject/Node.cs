@@ -8,6 +8,7 @@ namespace PrintTreeProject
 {
     class Node
     {
+        //TODO: make immutable
         public int value;
         public Node left;
         public Node right;

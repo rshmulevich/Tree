@@ -8,15 +8,28 @@ namespace PrintTreeProject
 {
     class Tree
     {
-        Node top;
+        private Node _top;
+        private int _root;
+        private int _treeSize;
+        private int _leftInc;
+        private int _rightInc;
 
-        public Tree(int root)
+        public Tree(int root, int trSze, int li, int ri)
         {
-            top = new Node(root, 0);
+            //_root = root;
+            _treeSize = trSze;
+            _leftInc = li;
+            _rightInc = ri;
+
+
+            _top = new Node(root, 0);
+
+            Build(_root, _treeSize, _leftInc, _rightInc);
+
         }
 
         //recursive Add
-        private void _addRec(ref Node myNode, int val, int level, int leftInc, int rightInc)
+        private void addRec(ref Node myNode, int val, int level, int leftInc, int rightInc)
         {
             
             if (level > 0)//check end of tree
@@ -25,26 +38,36 @@ namespace PrintTreeProject
 
                 myNode = newNode;//attaching new node
 
-                _addRec(ref myNode.left, val + leftInc, level - 1,leftInc ,rightInc);//add left node
-                _addRec(ref myNode.right, val + rightInc, level - 1, leftInc, rightInc);//add right node
+                addRec(ref myNode.left, val + leftInc, level - 1,leftInc ,rightInc);//add left node
+                addRec(ref myNode.right, val + rightInc, level - 1, leftInc, rightInc);//add right node
                 return;
 
             }
         }
         
         //adding the TOP of the tree
-        public void Add(int myValue, int treeSize, int leftInc, int rightInc)
+        private void Build(int myValue, int treeSize, int leftInc, int rightInc)
         {
-            _addRec(ref top, myValue, treeSize, leftInc, rightInc);
+            addRec(ref _top, myValue, treeSize, leftInc, rightInc);
 
         }
+        public string PrintLevel(int level)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Print()
+        {
+            throw new NotImplementedException();
+        }
+
 
         //printing the specified Tree level
         public void Print(Node myNode, ref string newString, int level)
         {
             if (myNode == null)
             {
-                myNode = top;
+                myNode = _top;
             }
 
             if (myNode.left != null)
