@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Configuration;
 
 namespace PrintTreeProject
 {
@@ -19,7 +19,7 @@ namespace PrintTreeProject
             double treeSize = Convert.ToInt32(confFile[1]); ; //tree size value path[2]
             string treestring = "";
 
-            
+            root=Convert.ToInt32( ReadSetting("Root"));
 
             
 
@@ -52,5 +52,20 @@ namespace PrintTreeProject
                 sw.Dispose();
             //Console.Read();//console app option
         }
+        static string ReadSetting(string key)
+        {
+            try
+            {
+                var appSettings = ConfigurationManager.AppSettings;
+                string result = appSettings[key] ?? "Not Found";
+                return result;
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error reading app settings");
+                return "Error reading app settings";
+            }
+        }
     }
+    
 }
