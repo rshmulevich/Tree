@@ -8,29 +8,71 @@ using System.Configuration;
 
 namespace PrintTreeProject
 {
+    
     class Program
     {
+        private const int POS_ROOT = 0;
+        private const int POS_TREE_SIZE = 1;
+        private const int POS_PATH = 2;
+        private const int POS_LEFT_INC = 3;
+        private const int POS_RIGHT_INC = 4;
+
+
         static void Main(string[] args)
         {
-            //read data from conf.txt file, root and treesize can be configured to be read from [0] [1]
-            string[] confFile = File.ReadAllLines(@"..\..\..\conf.txt");
+            // TODO: combine relative path to config file with current path of the application
+            
 
-            int root = Convert.ToInt32( confFile[0]);//tree root value //path[1]
-            double treeSize = Convert.ToInt32(confFile[1]); ; //tree size value path[2]
+            string dir = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            dir = System.IO.Path.GetDirectoryName(dir);
+            string[] confFile = File.ReadAllLines(dir+@"\conf.txt");
+
+            // TODO: add some content checking. What if file is empty? what if format doesn't reflect exactly required format?
+            int root;//tree root value //path[0]
+            double treeSize;//tree size value path[1]
+            string path = confFile[POS_PATH];
+            int leftInc;
+            int rightInc;
+
+            if (!int.TryParse(confFile[POS_ROOT], out root))
+            {
+                Console.WriteLine("Root can't be read: " + confFile[POS_ROOT]);
+                return;
+            }
+
+            if (!double.TryParse(confFile[POS_TREE_SIZE], out treeSize))
+            {
+                Console.WriteLine("Tree Siize can't be read: " + confFile[POS_TREE_SIZE]);
+                return;
+            }
+            
+            if (!int.TryParse(confFile[POS_LEFT_INC], out leftInc))
+            {
+                Console.WriteLine("Left Inc can't be read: " + confFile[POS_LEFT_INC]);
+                return;
+            }
+            
+            if (!int.TryParse(confFile[POS_RIGHT_INC], out rightInc))
+            {
+                Console.WriteLine("Right Inc can't be read: " + confFile[POS_RIGHT_INC]);
+                return;
+            }
+
+
             string treestring = "";
 
-            root=Convert.ToInt32( ReadSetting("Root"));
+           // root=Convert.ToInt32( ReadSetting("Root"));
 
             
 
             Tree myTree = new Tree(root);
 
-            myTree.Add(root, (int)treeSize, Convert.ToInt32(confFile[3]), Convert.ToInt32(confFile[4])); //building the tree
+            myTree.Add(root, (int)treeSize, Convert.ToInt32(leftInc), Convert.ToInt32(rightInc)); //building the tree
 
             double k = Math.Pow(2,treeSize);//calculating the size of the last level
 
-
-            StreamWriter sw = new StreamWriter(confFile[2]);
+            // TODO: create method PrintTree
+            StreamWriter sw = new StreamWriter(path);
             
 
 
@@ -52,20 +94,20 @@ namespace PrintTreeProject
                 sw.Dispose();
             //Console.Read();//console app option
         }
-        static string ReadSetting(string key)
-        {
-            try
-            {
-                var appSettings = ConfigurationManager.AppSettings;
-                string result = appSettings[key] ?? "Not Found";
-                return result;
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error reading app settings");
-                return "Error reading app settings";
-            }
-        }
+        //static string ReadSetting(string key)
+        //{
+        //    try
+        //    {
+        //        var appSettings = ConfigurationManager.AppSettings;
+        //        string result = appSettings[key] ?? "Not Found";
+        //        return result;
+        //    }
+        //    catch (ConfigurationErrorsException)
+        //    {
+        //        Console.WriteLine("Error reading app settings");
+        //        return "Error reading app settings";
+        //    }
+        //}
     }
     
 }
