@@ -23,11 +23,16 @@ namespace PrintTreeProject
             // TODO: combine relative path to config file with current path of the application
             
 
-            string dir = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            dir = System.IO.Path.GetDirectoryName(dir);
-            string[] confFile = File.ReadAllLines(dir+@"\conf.txt");
+            string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string dir = System.IO.Path.GetDirectoryName(location);
+
+            string[] confFile = File.ReadAllLines(Path.Combine(dir, @"\conf.txt"));
 
             // TODO: add some content checking. What if file is empty? what if format doesn't reflect exactly required format?
+            // TODO: use config .txt as a key/value store:
+            // key1=val1
+            // key2=val2
+
             int root;//tree root value //path[0]
             double treeSize;//tree size value path[1]
             string path = confFile[POS_PATH];
@@ -63,7 +68,7 @@ namespace PrintTreeProject
 
            // root=Convert.ToInt32( ReadSetting("Root"));
 
-            
+            // TODO: proper setup as an immutable object
 
             Tree myTree = new Tree(root);
 
