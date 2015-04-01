@@ -11,7 +11,7 @@ namespace PrintTreeProject
     
     class Program
     {
-        
+        public static string treestring = "";
 
         static void Main(string[] args)
         {
@@ -19,54 +19,43 @@ namespace PrintTreeProject
 
             var treeConf = Cnfg.Read();   
 
-
-            string treestring = "";
-
-
             // TODO: proper setup as an immutable object
 
             Tree myTree = new Tree(treeConf.Root, treeConf.TreeSize, treeConf.LeftInc, treeConf.RightInc);
-            
             
             double k = Math.Pow(2,treeConf.TreeSize);//calculating the size of the last level
 
             // TODO: create method PrintTree
             StreamWriter sw = new StreamWriter(treeConf.Path);
 
-            Node initNode = null;
+            //Node initNode = null;
 
-                for (int i = (int)treeConf.TreeSize; i > 0; i--)//printing tree levels
+           
+
+            for (int i = (int)treeConf.TreeSize; i > 0; i--)//printing tree levels
+            {
+                treestring = myTree.PrintLevel(i);//print level i
+
+                for (int j = (int)(k - treestring.Length / 2); j > 0; j--)//insert spaces to format the tree
                 {
-                    myTree.Print(initNode, ref treestring, i);//print level i
-
-                    for (int j = (int)(k - treestring.Length / 2); j > 0; j--)//insert spaces to format the tree
-                    {
-                        sw.Write (" ");
-                        //Console.Write(" ");//console app option
-                    }
-
-                    sw.WriteLine(treestring);
-                    // Console.WriteLine(treestring);//console app option
-                    treestring = "";
+                    sw.Write (" ");
+                    //Console.Write(" ");//console app option
                 }
-                sw.Close();
-                sw.Dispose();
-            //Console.Read();//console app option
+
+                sw.WriteLine(treestring);
+                // Console.WriteLine(treestring);//console app option
+                treestring = "";
+                Tree.newString ="";
+            }
+
+           // treestring = myTree.Print(initNode);
+
+
+            sw.Close();
+            sw.Dispose();
+        //Console.Read();//console app option
         }
-        //static string ReadSetting(string key)
-        //{
-        //    try
-        //    {
-        //        var appSettings = ConfigurationManager.AppSettings;
-        //        string result = appSettings[key] ?? "Not Found";
-        //        return result;
-        //    }
-        //    catch (ConfigurationErrorsException)
-        //    {
-        //        Console.WriteLine("Error reading app settings");
-        //        return "Error reading app settings";
-        //    }
-        //}
+       
     }
     
 }

@@ -8,23 +8,24 @@ namespace PrintTreeProject
 {
     class Tree
     {
-        private Node _top;
-        private int _root;
-        private int _treeSize;
-        private int _leftInc;
-        private int _rightInc;
+        private Node Top ;//{ get; private set; }
+       // private int _root;
+        //private int _treeSize;
+        //private int _leftInc;
+        //private int _rightInc;
+        public static string newString="";
+
 
         public Tree(int root, int trSze, int li, int ri)
         {
+            //_treeSize = trSze;
+            //_leftInc = li;
+            //_rightInc = ri;
             //_root = root;
-            _treeSize = trSze;
-            _leftInc = li;
-            _rightInc = ri;
 
+            Top = new Node(root, 0);
 
-            _top = new Node(root, 0);
-
-            Build(_root, _treeSize, _leftInc, _rightInc);
+            Build(root, trSze, li, ri);
 
         }
 
@@ -34,9 +35,9 @@ namespace PrintTreeProject
             
             if (level > 0)//check end of tree
             {
-                Node newNode = new Node(val, level);
-
-                myNode = newNode;//attaching new node
+               
+                    Node newNode = new Node(val, level);
+                    myNode = newNode;//attaching new node
 
                 addRec(ref myNode.left, val + leftInc, level - 1,leftInc ,rightInc);//add left node
                 addRec(ref myNode.right, val + rightInc, level - 1, leftInc, rightInc);//add right node
@@ -48,41 +49,77 @@ namespace PrintTreeProject
         //adding the TOP of the tree
         private void Build(int myValue, int treeSize, int leftInc, int rightInc)
         {
-            addRec(ref _top, myValue, treeSize, leftInc, rightInc);
+            addRec(ref Top, myValue, treeSize, leftInc, rightInc);
 
         }
+        //public string PrintLevel(int level)
+        //{
+
+
+        //    throw new NotImplementedException();
+        //}
+
+        //public string Print(Node myNode)
+        //{
+            
+        //    if (myNode.left != null)
+        //    {
+                
+        //        newString = newString + myNode.value.ToString().PadLeft(3);
+
+        //        Print(myNode.left);
+
+        //        return newString;
+
+
+        //    }
+        //    else
+        //    {
+        //        newString = newString + myNode.value.ToString().PadLeft(3);
+        //    }
+
+
+        //    if (myNode.right != null)
+        //    {
+
+        //        Print(myNode.right); 
+                
+        //        return newString = newString + myNode.value.ToString().PadLeft(3);
+        //    }
+
+
+
+        //    throw new NotImplementedException();
+        //}
+
+
+        //Recursive printing the specified Tree level
         public string PrintLevel(int level)
         {
-            throw new NotImplementedException();
+            return PrintLevelRec(Top, level);
         }
-
-        public string Print()
-        {
-            throw new NotImplementedException();
-        }
-
 
         //printing the specified Tree level
-        public void Print(Node myNode, ref string newString, int level)
+        private string PrintLevelRec(Node myNode, int level)
         {
             if (myNode == null)
             {
-                myNode = _top;
+                myNode = Top;
             }
 
             if (myNode.left != null)
             {
                 if (myNode.level == level)
                 {
-                    newString = newString + myNode.value.ToString().PadLeft(3);
-                    return;
+                   return newString = newString + myNode.value.ToString().PadLeft(3);
+                    
                 }
-                Print(myNode.left, ref newString, level);
+                PrintLevelRec(myNode.left, level);
                 
             }
             else
             {
-                newString = newString + myNode.value.ToString().PadLeft(3);
+                return newString = newString + myNode.value.ToString().PadLeft(3);
             }
 
 
@@ -90,11 +127,13 @@ namespace PrintTreeProject
             {
                 if (myNode.level == level)
                 {
-                    newString = newString + myNode.value.ToString().PadLeft(3);
-                    return;
+                    return newString = newString + myNode.value.ToString().PadLeft(3);
+
                 }
-                Print(myNode.right, ref newString,level);
+                PrintLevelRec(myNode.right,level);
             }
+
+            return newString;
         }
 
     }
