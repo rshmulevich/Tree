@@ -8,24 +8,14 @@ namespace PrintTreeProject
 {
     class Tree
     {
-        private Node Top ;//{ get; private set; }
-       // private int _root;
-        //private int _treeSize;
-        //private int _leftInc;
-        //private int _rightInc;
+        private Node Top ;
         public static string newString="";
 
 
-        public Tree(int root, int trSze, int li, int ri)
+        public Tree(int root, int triSize, int linc, int rinc)
         {
-            //_treeSize = trSze;
-            //_leftInc = li;
-            //_rightInc = ri;
-            //_root = root;
-
-            Top = new Node(root, 0);
-
-            Build(root, trSze, li, ri);
+             Top = new Node(root, 0);
+            Build(root, triSize, linc, rinc);
 
         }
 
@@ -52,45 +42,39 @@ namespace PrintTreeProject
             addRec(ref Top, myValue, treeSize, leftInc, rightInc);
 
         }
-        //public string PrintLevel(int level)
-        //{
 
 
-        //    throw new NotImplementedException();
-        //}
 
-        //public string Print(Node myNode)
-        //{
+        public void PrintNode()
+        {
+            _printNodeRec(ref Top);
+            return ;
+        }
+        private void _printNodeRec(ref Node myNode)
+        {
+            if (myNode == null)
+                return ;
             
-        //    if (myNode.left != null)
-        //    {
-                
-        //        newString = newString + myNode.value.ToString().PadLeft(3);
+            if (myNode.left != null)
+            {
+                Console.WriteLine(myNode.value.ToString().PadLeft(5));
+                Console.Write(myNode.left.value.ToString().PadLeft(3));
+                Console.Write(myNode.right.value.ToString().PadLeft(3) + "\n");
+                _printNodeRec(ref myNode.left);
+            }
 
-        //        Print(myNode.left);
+            if (myNode.right != null)
+            {
+                Console.WriteLine(myNode.value.ToString().PadLeft(5));
+                Console.Write(myNode.left.value.ToString().PadLeft(3));
+                Console.Write(myNode.right.value.ToString().PadLeft(3) + "\n");
 
-        //        return newString;
+                _printNodeRec(ref myNode.right);
+            }
+            
+            return;
 
-
-        //    }
-        //    else
-        //    {
-        //        newString = newString + myNode.value.ToString().PadLeft(3);
-        //    }
-
-
-        //    if (myNode.right != null)
-        //    {
-
-        //        Print(myNode.right); 
-                
-        //        return newString = newString + myNode.value.ToString().PadLeft(3);
-        //    }
-
-
-
-        //    throw new NotImplementedException();
-        //}
+        }
 
 
         //Recursive printing the specified Tree level
@@ -102,10 +86,6 @@ namespace PrintTreeProject
         //printing the specified Tree level
         private string PrintLevelRec(Node myNode, int level)
         {
-            if (myNode == null)
-            {
-                myNode = Top;
-            }
 
             if (myNode.left != null)
             {

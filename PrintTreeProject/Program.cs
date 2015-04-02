@@ -47,9 +47,9 @@ namespace PrintTreeProject
                 treestring = "";
                 Tree.newString ="";
             }
-
-           // treestring = myTree.Print(initNode);
-
+            //printing nodes
+           myTree.PrintNode();
+           Console.ReadLine();
 
             sw.Close();
             sw.Dispose();
