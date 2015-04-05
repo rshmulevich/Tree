@@ -11,18 +11,20 @@ namespace PrintTreeProject
     
     class Program
     {
-        public static string treestring = "";
+
 
         static void Main(string[] args)
         {
-            IConfigurator Cnfg = new FileConfigurator("conf.txt");
+            IConfigurator cnfg = new FileConfigurator("conf.txt");
 
-            var treeConf = Cnfg.Read();   
+            var treeConf = cnfg.Read();
 
             // TODO: Why don't pass configuration to tree as is?
 
             Tree myTree = new Tree(treeConf.Root, treeConf.TreeSize, treeConf.LeftInc, treeConf.RightInc);
-            
+            //string strTree = myTree.Print();
+            //Console.WriteLine(strTree);
+
             double k = Math.Pow(2,treeConf.TreeSize);//calculating the size of the last level
 
             // TODO: create method PrintTree
@@ -34,7 +36,7 @@ namespace PrintTreeProject
 
             for (int i = (int)treeConf.TreeSize; i > 0; i--)//printing tree levels
             {
-                treestring = myTree.PrintLevel(i);//print level i
+                string treestring = myTree.PrintLevel(i);
 
                 for (int j = (int)(k - treestring.Length / 2); j > 0; j--)//insert spaces to format the tree
                 {

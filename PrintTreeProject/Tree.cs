@@ -16,9 +16,8 @@ namespace PrintTreeProject
 
         public Tree(int root, int triSize, int linc, int rinc)
         {
-             Top = new Node(root, 0);
+            Top = new Node(root, 0);
             Build(root, triSize, linc, rinc);
-
         }
 
         //Recursive printing the specified Tree level
@@ -29,7 +28,6 @@ namespace PrintTreeProject
         public void PrintNode()
         {
             _printNodeRec(ref Top);
-            return; // TODO: Why return here?
         }
 
         #region private methods
@@ -60,6 +58,22 @@ namespace PrintTreeProject
 
         }
 
+        public string PrintTree()
+        {
+            return PrintTree(Top);
+        }
+
+        private string PrintTree(Node node)
+        {
+            if (node == null)
+                return "#";
+            string rec = string.Format("     {0}\n", node.value);
+            rec += string.Format("   {0}   {1}", PrintTree(node.left),  PrintTree(node.right));
+            return rec;
+
+            //return string.Format("L:{0}  V:{1}   R:{2}", PrintTree(node.left), node.value, PrintTree(node.right));
+        }
+
         // TODO: do not prefix method names with _
         private void _printNodeRec(ref Node myNode)
         {
@@ -68,7 +82,8 @@ namespace PrintTreeProject
             
             if (myNode.left != null)
             {
-                Console.WriteLine(myNode.value.ToString().PadLeft(5));
+                Console.WriteLine(  myNode.value.ToString().PadLeft(5)  );
+
                 Console.Write(myNode.left.value.ToString().PadLeft(3));
                 Console.Write(myNode.right.value.ToString().PadLeft(3) + "\n");
                 _printNodeRec(ref myNode.left);
