@@ -8,6 +8,8 @@ namespace PrintTreeProject
 {
     class Tree
     {
+        // TODO: next time, use regions, as I added:
+        // TODO: Can you add PrintTree method?
         private Node Top ;
         public static string newString="";
 
@@ -19,23 +21,38 @@ namespace PrintTreeProject
 
         }
 
+        //Recursive printing the specified Tree level
+        public string PrintLevel(int level)
+        {
+            return PrintLevelRec(Top, level);
+        }
+        public void PrintNode()
+        {
+            _printNodeRec(ref Top);
+            return; // TODO: Why return here?
+        }
+
+        #region private methods
+        // TODO: give meaningful name to the addRec method
+        // TODO: Why send Node by ref?
         //recursive Add
         private void addRec(ref Node myNode, int val, int level, int leftInc, int rightInc)
         {
             
             if (level > 0)//check end of tree
             {
-               
+               // TODO: proper tabulation
                     Node newNode = new Node(val, level);
                     myNode = newNode;//attaching new node
 
                 addRec(ref myNode.left, val + leftInc, level - 1,leftInc ,rightInc);//add left node
                 addRec(ref myNode.right, val + rightInc, level - 1, leftInc, rightInc);//add right node
-                return;
+                return; // TODO: return here is not required, method is void 
 
             }
         }
         
+        // TODO: What does parameter myValue mean?
         //adding the TOP of the tree
         private void Build(int myValue, int treeSize, int leftInc, int rightInc)
         {
@@ -43,13 +60,7 @@ namespace PrintTreeProject
 
         }
 
-
-
-        public void PrintNode()
-        {
-            _printNodeRec(ref Top);
-            return ;
-        }
+        // TODO: do not prefix method names with _
         private void _printNodeRec(ref Node myNode)
         {
             if (myNode == null)
@@ -76,12 +87,6 @@ namespace PrintTreeProject
 
         }
 
-
-        //Recursive printing the specified Tree level
-        public string PrintLevel(int level)
-        {
-            return PrintLevelRec(Top, level);
-        }
 
         //printing the specified Tree level
         private string PrintLevelRec(Node myNode, int level)
@@ -115,7 +120,7 @@ namespace PrintTreeProject
 
             return newString;
         }
-
+        #endregion private methods
     }
 }
 

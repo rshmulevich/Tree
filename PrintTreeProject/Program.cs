@@ -19,7 +19,7 @@ namespace PrintTreeProject
 
             var treeConf = Cnfg.Read();   
 
-            // TODO: proper setup as an immutable object
+            // TODO: Why don't pass configuration to tree as is?
 
             Tree myTree = new Tree(treeConf.Root, treeConf.TreeSize, treeConf.LeftInc, treeConf.RightInc);
             
