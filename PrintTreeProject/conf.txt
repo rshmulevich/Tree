@@ -1,4 +1,4 @@
-Root = 5
+Root = 8
 TreeSize =6
 Path =..\..\tree.txt
 Left_Increment = 3

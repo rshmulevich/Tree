@@ -8,18 +8,18 @@ namespace PrintTreeProject
 {
     class Node
     {
-        //TODO: make immutable
-        public int value;
-        public Node left;
-        public Node right;
-        public int level;
+        //TODO: make immutable - DONE
+        public int value { get; private set; }
+        public Node left { get; private set; }
+        public Node right { get; private set; }
+        public int level { get; private set; }
 
-        public Node(int root, int floor)
+        public Node(int root, int newlevel, Node newLeft, Node newRight)
         {
             value = root;
-            left = null;
-            right = null;
-            level = floor;
+            left = newLeft;
+            right = newRight;
+            level = newlevel;
         }
     }
 }
